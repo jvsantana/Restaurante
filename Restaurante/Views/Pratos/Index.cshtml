@@ -1,0 +1,42 @@
+﻿<h3>Cadastro de Pratos</h3>
+<hr />
+<div ng-controller="PratoController">
+    <div class="navbar-form navbar-left">
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model="prato.Nome" placeholder="pesquisa">
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="pesquisar()">Pesquisar</button>
+        <button type="button" class="btn btn-primary" onclick="location.href = '/Pratos/Create/';">Cadastrar novo prato</button>
+    </div>
+    <div class="table-responsive">
+        <table id="mytable" class="table table-bordred table-striped">
+            <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Ativo</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in ListOfPratos">
+                    <td>{{item.PratoID}}</td>
+                    <td>{{item.Nome}}</td>
+                    <td>{{item.Preco}}</td>
+                    <td>
+                        <span class="label" ng-class="{true:'label-success', false:'label-danger', '':'hidden'}[item.IsActive]">
+                            {{ item.IsActive ? 'Active' : 'In Active' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-pencil" ng-click="EditarPrato(item)"></span>
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-trash" ng-click="DeletaPrato(item)"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
