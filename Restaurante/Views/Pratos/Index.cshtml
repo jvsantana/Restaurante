@@ -36,7 +36,7 @@
                         <button ng-click="EditarPrato(item)"><i class="glyphicon glyphicon-pencil"></i></button>
                     </td>
                     <td>
-                        <button ng-click="DeletaPrato(item)"  ><i class="glyphicon glyphicon-trash"></i></button>
+                        <button ng-really-message="Excluir o registro?" ng-really-click="DeletaPrato(item)"><i class="glyphicon glyphicon-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
