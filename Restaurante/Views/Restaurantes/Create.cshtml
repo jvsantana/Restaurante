@@ -1,0 +1,35 @@
+﻿<form name="formCreate">
+    <h3>Cadastro de Restaurantes</h3>
+    <hr />
+    <div ng-controller="RestauranteController">
+
+        <div class="row">
+            <div class="col-sm-2">
+                <label ng-class="class_codigo">C&oacute;digo</label>
+                <input type="text" ng-model="restaurante.ID" class="form-control alter-placeholder-color" ng-disabled="true">
+            </div>
+            <div class="col-sm-4">
+                <label ng-class="class_descricao">Nome do Restaurante</label>
+                <input type="text" ng-model="restaurante.Nome" class="form-control alter-placeholder-color"
+                       placeholder="Digite a nome do Restaurante" maxlength="300">
+            </div>
+
+            <div class="col-sm-1">
+                <label ng-class="class_descricao">Ativo</label><br />
+                <input type="checkbox" checked disabled data-toggle="toggle" ng-model="restaurante.Ativo" />
+            </div>
+         
+        </div>
+
+        <div class="row" style="padding-left: 14px; padding-top: 10px">
+            <button type="button" class="btn btn-primary btn-mesmo-tamanho" ng-click="AddRestaurante()">
+                Salvar
+            </button>
+            <button type="button" class="btn btn-grey btn-mesmo-tamanho" ng-click="voltar()">
+                Cancelar
+            </button>
+        </div>
+    </div>
+</form>
+
+

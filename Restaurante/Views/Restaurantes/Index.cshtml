@@ -1,0 +1,47 @@
+﻿<h3>Cadastro de Restaurantes</h3>
+<hr />
+<div ng-controller="RestauranteController" ng-init="pesquisar()">
+
+    <div class="table-responsive">
+        <div class="form-inline">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" class="form-control" ng-model="restaurante.Nome" placeholder="Pesquisar Restaurante">
+            </div>
+            <button type="button" class="btn btn-primary" ng-click="pesquisar()">Pesquisar</button>
+            <button type="button" class="btn btn-primary" onclick="location.href = '/Restaurantes/Create/';">Cadastrar novo restaurante</button>
+        <div>
+    </div>
+    <hr />
+    <div class="table-responsive">
+        <table id="mytable" class="table table-bordred table-striped">
+            <thead>
+            <th>ID</th>
+            <th>Restaurante</th>
+            <th>Ativo</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in restaurantes">
+                    <td>{{item.ID}}</td>
+                    <td>{{item.Nome}}</td>
+                    <td>
+                        <span class="label" ng-class="{true:'label-success', false:'label-danger', '':'hidden'}[item.Ativo]">
+                            {{ item.Ativo ? 'Ativo' : 'Inativo' }}
+                        </span>
+                    </td>
+                    <td>
+                        <button ng-click="EditarRestaurante(item)"><i class="glyphicon glyphicon-pencil"></i></button>
+                    </td>
+                    <td>
+                        <button ng-click="DeletaRestaurante(item)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+

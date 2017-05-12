@@ -26,24 +26,26 @@ namespace WebRestaurante
                 "~/Scripts/angular-sanitize.min.js",
                 "~/Scripts/i18n/angular-locale_pt-br.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/ctrl").Include(
-                "~/Scripts/ctrl/App.js",
-               "~/Scripts/ctrl/RestauranteCtrl.js",
-                "~/Scripts/ctrl/PratoCtrl.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                     "~/Scripts/bootstrap.js",
-                    "~/Scripts/respond.js"));
+                    "~/Scripts/respond.js",
+                    "~/Scripts/bootstrap-toggle.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ng-table").Include(
                       "~/Scripts/ng-table.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-toggle.less",
                       "~/Content/ng-table.min.css",
-                        "~/Content/ace.min.css",
-                        "~/Content/font-awesome.min.css",
+                      "~/Content/ace.min.css",
+                      "~/Content/font-awesome.min.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/App").Include(
+               "~/App/App.js",
+               "~/App/RestauranteController.js",
+               "~/App/PratoController.js"));
         }
     }
 }

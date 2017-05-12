@@ -205,15 +205,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PratoController.cs" />
+    <Compile Include="Controllers\RestauranteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\dbWebRestaurante.cs" />
-    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Prato.cs" />
+    <Compile Include="Models\Restaurante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -246,8 +247,12 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Content\bootstrap-toggle.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\App\app.js" />
+    <Content Include="App\App.js" />
+    <Content Include="App\RestauranteController.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-toggle.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -260,9 +265,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\App\PratoController.js" />
+    <Content Include="App\PratoController.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="styles.css" />
+    <Content Include="Views\Pratos\Create.cshtml" />
+    <Content Include="Views\Pratos\Edit.cshtml" />
     <None Include="Views\Pratos\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -276,8 +283,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Restaurantes\Create.cshtml" />
+    <Content Include="Views\Restaurantes\Edit.cshtml" />
+    <Content Include="Views\Restaurantes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

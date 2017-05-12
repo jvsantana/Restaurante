@@ -11,7 +11,7 @@ namespace WebRestaurante.Models
         }
 
         public DbSet<Prato> Pratos { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Restaurante> Restaurantes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

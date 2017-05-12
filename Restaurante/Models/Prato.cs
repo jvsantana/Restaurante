@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebRestaurante.Models
 {
-    [Table("Tb_Prato")]
+    [Table("TB_Prato")]
     public class Prato
     {
         [Key]
@@ -21,6 +21,12 @@ namespace WebRestaurante.Models
         [Required(ErrorMessage = "O valor de ser informado.")]
         public decimal Preco { get; set; }
 
-        public bool Ativo { get; set; }
+        [Required(ErrorMessage = "Informe o restaurante.")]
+        public int RestauranteID { get; set; }
+
+        public bool Ativo { get; set; } = true;
+
+        [ForeignKey("RestauranteID")]
+        public virtual Restaurante Restaurante { get; set; }
     }
 }

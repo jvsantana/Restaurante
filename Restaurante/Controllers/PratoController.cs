@@ -12,16 +12,16 @@ namespace WebRestaurante.Controllers
 {
     public class PratosController : Controller
     {
-        dbWebRestaurante db = new dbWebRestaurante();
+        private dbWebRestaurante db = new dbWebRestaurante();
 
         // GET: Pratos
         public ActionResult Index()
         {
-            //var pratos = db.Pratos.Include(p => p.Nome);
-            return View(db.Pratos.ToList());
+            var pratos = db.Pratos.Include(p => p.Restaurante);
+            return View(pratos.ToList());
         }
 
-        // GET: Pratos/Details/5
+        // GET: Pratos/Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,26 +39,26 @@ namespace WebRestaurante.Controllers
         // GET: Pratos/Create
         public ActionResult Create()
         {
-            ViewBag.RestauranteID = new SelectList(db.Pratos, "ID", "Nome", "Ativo");
+            ViewBag.RestauranteID = new SelectList(db.Restaurantes, "ID", "Nome");
             return View();
         }
 
         // POST: Pratos/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ID,Nome,Preco,Ativo")] Prato prato)
+        public ActionResult Create([Bind(Include = "ID,Nome,Preco,RestauranteID,Ativo")] Prato prato)
         {
             if (ModelState.IsValid)
-            {
-                // prato.datacadastro = DateTime.Now; 
+            { 
                 db.Pratos.Add(prato);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.RestauranteID = new SelectList(db.Restaurantes, "ID", "Nome", prato.RestauranteID, "Ativo");
             return View(prato);
         }
 
-        // GET: Pratos/Edit/5
+        // GET: Pratos/Edit
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -70,13 +70,13 @@ namespace WebRestaurante.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PratoID = new SelectList(db.Pratos, "ID", "Nome", "Ativo", prato);
+            ViewBag.PratoID = new SelectList(db.Pratos, "ID", "Nome", prato);
             return View(prato);
         }
 
-        // POST: Pratos/Edit/5
+        // POST: Pratos/Edit
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Preco,Ativo")] Prato prato)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Preco,RestauranteID,Ativo")] Prato prato)
         {
             if (ModelState.IsValid)
             {
@@ -84,10 +84,11 @@ namespace WebRestaurante.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.RestauranteID = new SelectList(db.Restaurantes, "ID", "Nome", prato.RestauranteID, "Ativo");
             return View(prato);
         }
 
-        // POST: Pratos/Delete/5
+        // POST: Pratos/Delete
         [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -97,8 +98,9 @@ namespace WebRestaurante.Controllers
             return RedirectToAction("Index");
         }
 
+        //POST: Restaurantes/Combo
         [HttpPost]
-        public ActionResult Search([Bind(Include = "ID,Nome,RestauranteID,Preco")] Prato pesquisaPrato)
+        public ActionResult Search([Bind(Include = "ID,Nome,RestauranteID,Preco,Ativo")] Prato pesquisaPrato)
         {
             List<Prato> pratos;
             if (pesquisaPrato == null || string.IsNullOrEmpty(pesquisaPrato.Nome))

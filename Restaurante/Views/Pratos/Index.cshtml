@@ -1,13 +1,17 @@
 ﻿<h3>Cadastro de Pratos</h3>
 <hr />
-<div ng-controller="PratoController">
-    <div class="navbar-form navbar-left">
-        <div class="form-group">
-            <input type="text" class="form-control" ng-model="prato.Nome" placeholder="pesquisa">
-        </div>
-        <button type="button" class="btn btn-primary" ng-click="pesquisar()">Pesquisar</button>
-        <button type="button" class="btn btn-primary" onclick="location.href = '/Pratos/Create/';">Cadastrar novo prato</button>
+<div ng-controller="PratoController" ng-init="pesquisar()">
+    <div class="table-responsive">
+        <div class="form-inline">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" class="form-control" ng-model="prato.Nome" placeholder="Pesquisar Prato">
+            </div>
+            <button type="button" class="btn btn-primary" ng-click="pesquisar()">Pesquisar</button>
+            <button type="button" class="btn btn-primary" onclick="location.href = '/Pratos/Create/';">Cadastrar novo prato</button>
+        <div>
     </div>
+    <hr />
     <div class="table-responsive">
         <table id="mytable" class="table table-bordred table-striped">
             <thead>
@@ -19,20 +23,20 @@
             <th>Delete</th>
             </thead>
             <tbody>
-                <tr ng-repeat="item in ListOfPratos">
-                    <td>{{item.PratoID}}</td>
+                <tr ng-repeat="item in pratos">
+                    <td>{{item.ID}}</td>
                     <td>{{item.Nome}}</td>
-                    <td>{{item.Preco}}</td>
+                    <td>{{item.Preco | currency}}</td>
                     <td>
-                        <span class="label" ng-class="{true:'label-success', false:'label-danger', '':'hidden'}[item.IsActive]">
-                            {{ item.IsActive ? 'Active' : 'In Active' }}
+                        <span class="label" ng-class="{true:'label-success', false:'label-danger', '':'hidden'}[item.Ativo]">
+                            {{ item.Ativo ? 'Ativo' : 'Inativo' }}
                         </span>
                     </td>
                     <td>
-                        <span class="glyphicon glyphicon-pencil" ng-click="EditarPrato(item)"></span>
+                        <button ng-click="EditarPrato(item)"><i class="glyphicon glyphicon-pencil"></i></button>
                     </td>
                     <td>
-                        <span class="glyphicon glyphicon-trash" ng-click="DeletaPrato(item)"></span>
+                        <button ng-click="DeletaPrato(item)"  ><i class="glyphicon glyphicon-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
